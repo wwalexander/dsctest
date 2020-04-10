@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fizzbuzz
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fizzbuzz
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: fizzbuzz
+    spec:
+      containers:
+      - name: fizzbuzz
+        image: fizzbuzz
+        # Prevent Kubernetes from trying to pull the fizzbuzz image from a
+        # Docker registry. If this is not specified, pods will fail to start.
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 4343
+          name: fizzbuzz
