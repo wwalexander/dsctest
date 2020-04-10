@@ -7,7 +7,7 @@ Deployment
 `deploy.sh` starts minikube if it is not already running, builds the Docker
 image for the fizzbuzz server into minikube, and applies the Kubernetes
 configuration file for the cluster. The server can be accessed via a NodePort at
-$(minikube ip):30000`:
+`$(minikube ip):30000`:
 
     curl -X POST -H 'Content-Type: application/json' $(minikube ip):30000/fizzbuzz
 
@@ -16,7 +16,7 @@ Design decisions
 
 ### Docker
 
-The Dockerfile is based on golang:1-alpine. I chose to only set the major Go
+The Dockerfile is based on `golang:1-alpine`. I chose to only set the major Go
 version, as Go is meant to be backwards compatible between minor releases, so
 the image will get the latest improvements and bug fixes without breaking the
 server code. I chose Alpine Linux as Docker recommends it for the smallest image
